@@ -7,50 +7,29 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
-import java.util.HashSet;
-import java.util.Set;
+import java.io.Serializable;
+import java.util.List;
 
-@Transactional
+
 @Component
+@Transactional
 public class JpaRunner implements ApplicationRunner {
 
     @Autowired
-    EntityManager entityManager;
+    private PostRepository postRepository;
+
+    @Autowired
+    private Keesun keesun;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-
-        Account account = Account.builder()
-                .username("yoonsh_latest")
-                .password("helloworld")
-                .email("ysh@wmp.com")
-//                .homeAddress(new Address("zipcode","city","street"))
-//                .officeAddress(new Address("zipcode","city","street"))
-//                .studies(studies)
-                .build();
-
-        Study study = new Study();
-        study.setName("yoonsh");
-        study.setOwner(account);
-
-        Study study2 = new Study();
-        study2.setName("ysh22");
-        study2.setOwner(account);
-
-//        Set<Study> studies = new HashSet<>();
-//        studies.add(study);
-//        studies.add(study2);
-
-
-
-        Session session = entityManager.unwrap(Session.class);
-
-        session.save(account);
-        session.save(study);
-        session.save(study2);
-
-//        entityManager.persist(account);
-//        entityManager.persist(study);
+//        postRepository.
+        System.out.println(keesun.getName());
+        System.out.println(keesun);
     }
 }

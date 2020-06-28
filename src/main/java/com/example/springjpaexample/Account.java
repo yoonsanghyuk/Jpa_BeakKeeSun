@@ -24,6 +24,8 @@ public class Account {
     @OneToMany(mappedBy = "owner")
     private Set<Study> studies;
 
+
+
 //    private Study study;
 
 //    @Embedded
